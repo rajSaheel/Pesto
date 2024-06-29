@@ -1,18 +1,24 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState , useContext} from 'react'
 import axios from 'axios'
-import AuthContext  from './AuthContext'
+import { fetchUser } from './AuthContext'
+import AuthContext from './AuthContext'
 
 const TaskContext = createContext()
 
-const TaskProvider = ({ children }) => {
+export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([])
-  const { user } = useContext(AuthContext)
+  const { fetchUser } = useContext(AuthContext)
 
   const fetchTasks = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
-    })
-    setTasks(response.data)
+    try{
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
+      })
+      setTasks(response.data)
+    }catch(e){
+      fetchUser()
+    }
+    
   }
 
   const createTask = async (task) => {
@@ -43,4 +49,4 @@ const TaskProvider = ({ children }) => {
   )
 }
 
-export { TaskContext, TaskProvider }
+export default TaskContext

@@ -8,38 +8,34 @@ export const AuthProvider = ({ children }) => {
   
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/me`,{},{
-      headers: { "Authorization": `Bearer ${localStorage.getItem('accessToken')}`}})
-        console.log("Fetching user")
-        setUser(response.data.decoded)
-      } catch (error) {
-        try{
-        console.log("Refreshing access token")
-          const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/token`,{refreshToken:localStorage.getItem('refreshToken')})
-          localStorage.setItem('accessToken',response.data.accessToken)
-          setUser(response.data.user)
-        }catch(e){
-          setUser(null)
-        }
-      }
-    }
-
     fetchUser()
   }, [])
+
+  const fetchUser = async () => {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/me`,{},{
+    headers: { "Authorization": `Bearer ${localStorage.getItem('accessToken')}`}})
+      setUser(response.data.decoded)
+    } catch (error) {
+      try{
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/token`,{refreshToken:localStorage.getItem('refreshToken')})
+        localStorage.setItem('accessToken',response.data.accessToken)
+        setUser(response.data.user)
+      }catch(e){
+        setUser(null)
+      }
+    }
+  }
 
   const login = async (username, password) => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { username, password })
       localStorage.setItem('accessToken', response.data.accessToken)
       localStorage.setItem('refreshToken', response.data.refreshToken)
-      console.log(response.data.user)
       setUser(response.data.user)
       setError(null)
       
     } catch (error) {
-      console.log(error)
       if (error.response && error.response.status === 401) {
         setError({login:'Invalid credentials'})
       } else if(error.response && error.response.status === 401){
@@ -56,12 +52,10 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, { username,name, password })
       localStorage.setItem('accessToken', response.data.accessToken)
       localStorage.setItem('refreshToken', response.data.refreshToken)
-      console.log(response)
       setUser(response.data.user)
       setError(null)
       
     } catch (error) {
-      console.log(error)
       if (error.response && error.response.status === 400) {
         setError({register:'Username already registered'})
       } else {
@@ -82,7 +76,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated, error }}>
+    <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated, error,fetchUser }}>
       {children}
     </AuthContext.Provider>
   )
