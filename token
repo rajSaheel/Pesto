@@ -1,4 +1,9 @@
 {
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2U5OTQyZWRjOGI4OTM3ZDUyMzE0YyIsInVzZXJuYW1lIjoicmFqLnNhaGVlbCIsImlhdCI6MTcxOTU3Mzk2NywiZXhwIjoxNzE5NTc0ODY3fQ.bHN-kE0hJWt6ZM9CRN_Xt6-dTjFCllhZryCU_FjA26E",
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2U5OTQyZWRjOGI4OTM3ZDUyMzE0YyIsInVzZXJuYW1lIjoicmFqLnNhaGVlbCIsImlhdCI6MTcxOTU3Mzk2NywiZXhwIjoxNzIwMTc4NzY3fQ.JRsh7srdpnXuaj4uWbybAIX8wlk20nEezYgHL2bBUqM"
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2ZhNTI5MDZlYzE1MmVmZWJjOTNkYSIsInVzZXJuYW1lIjoidmlzaGFsLmt1bWFyIiwibmFtZSI6IlZpc2hhbCIsImlhdCI6MTcxOTY0MTM4NSwiZXhwIjoxNzE5NjQyMjg1fQ.YNIxDgdJqMkaRZlTrwZ2VWpx7o2WCcvN-sNl3vEZXsY",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2ZhNTI5MDZlYzE1MmVmZWJjOTNkYSIsInVzZXJuYW1lIjoidmlzaGFsLmt1bWFyIiwibmFtZSI6IlZpc2hhbCIsImlhdCI6MTcxOTY0MTM4NSwiZXhwIjoxNzIwMjQ2MTg1fQ.Z-6Nv8QFBg2kmgKecmaefx2K0zaM4Pur-NAt3u2n5Yg",
+  "user": {
+    "id": "667fa52906ec152efebc93da",
+    "username": "vishal.kumar",
+    "name": "Vishal"
+  }
 }
