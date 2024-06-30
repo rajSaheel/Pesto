@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import TaskContext from '../../context/TaskContext.js'
 import TaskForm from './TaskForm.js'
+import TaskItem from './TaskItem.js'
 
 const TaskListPage = () => {
   const { tasks, fetchTasks } = useContext(TaskContext)
@@ -12,7 +13,7 @@ const TaskListPage = () => {
 
   useEffect(() => {
     fetchTasks()
-  }, [fetchTasks])
+  }, [])
 
   useEffect(() => {
     const filterAndSearchTasks = () => {
@@ -55,13 +56,9 @@ const TaskListPage = () => {
         <option value="Done">Done</option>
       </select>
       <ul>
-        {filteredTasks.map(task => (
-          <li key={task._id}>
-            <h2>{task.title}</h2>
-            <p>{task.description}</p>
-            <p>Status: {task.status}</p>
-          </li>
-        ))}
+        {filteredTasks.map(task => 
+          <TaskItem key={task._id} task={task}/>
+        )}
       </ul>
     </div>
   )

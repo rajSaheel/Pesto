@@ -5,11 +5,11 @@ const Task = require('../models/Task')
 
 // Create Task
 router.post('/', authMiddleware.auth, async (req, res) => {
-  const { title, description, status } = req.body
+  const { title, description, status,dueDate } = req.body
   const userId = req.user.id
-
+  const date = new Date(dueDate)
   try {
-    const task = new Task({ title, description, status, userId: userId })
+    const task = new Task({ title, description, status, userId: userId,dueDate:date })
     await task.save()
     res.status(201).json(task)
   } catch (error) {

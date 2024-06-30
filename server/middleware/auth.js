@@ -3,7 +3,7 @@ const User = require('../models/User')
 
 const ACCESS_TOKEN_SECRET = 'access_token_secret'
 const REFRESH_TOKEN_SECRET = 'refresh_token_secret'
-const ACCESS_TOKEN_EXPIRATION = '1m'
+const ACCESS_TOKEN_EXPIRATION = '15m'
 const REFRESH_TOKEN_EXPIRATION = '7d' 
 
 // Function to generate tokens

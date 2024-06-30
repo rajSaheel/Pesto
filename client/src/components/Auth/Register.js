@@ -43,6 +43,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <input type='file'></input>
         </div>
         <button type="submit">Register</button>
       </form>

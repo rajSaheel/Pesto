@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { TaskContext } from '../../context/TaskContext'
+import  TaskContext  from '../../context/TaskContext'
 
 const TaskItem = ({ task }) => {
   const { updateTask, deleteTask } = useContext(TaskContext)
-
+  // const dueDate = new Date(task.dueDate).toDateString()
   const handleStatusChange = async (e) => {
     await updateTask(task._id, { ...task, status: e.target.value })
   }
@@ -22,6 +22,7 @@ const TaskItem = ({ task }) => {
         <option value="Done">Done</option>
       </select>
       <button onClick={handleDelete}>Delete</button>
+      {task.dueDate&&<p>Due:{new Date(task.dueDate).toDateString()}</p>}
     </li>
   )
 }

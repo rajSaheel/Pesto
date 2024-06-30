@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data.decoded)
     } catch (error) {
       try{
-        console(error)
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/token`,{refreshToken:localStorage.getItem('refreshToken')})
         localStorage.setItem('accessToken',response.data.accessToken)
         setUser(response.data.user)
