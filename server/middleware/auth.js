@@ -40,7 +40,7 @@ exports.login = async (req, res, next) => {
     if (!user) {
       return res.status(402).json({ message: 'User not registered' })
     }
-    else if(await user.comparePassword(password)){
+    else if(!await user.comparePassword(password)){
       return res.status(401).json({ message: 'Invalid credentials' })
     }
 

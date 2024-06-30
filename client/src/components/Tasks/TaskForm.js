@@ -4,7 +4,7 @@ import TaskContext from '../../context/TaskContext'
 const TaskForm = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [status,setStatus] = useState('To do')
+  const [status,setStatus] = useState('To Do')
   const { createTask } = useContext(TaskContext)
 
   const handleSubmit = async (e) => {
