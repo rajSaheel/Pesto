@@ -7,7 +7,7 @@ const TaskForm = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [status,setStatus] = useState('To Do')
-  const [dueDate,setDueDate] = useState('')
+  const [dueDate,setDueDate] = useState(null)
   const { createTask } = useContext(TaskContext)
 
   const handleSubmit = async (e) => {
@@ -28,7 +28,7 @@ const TaskForm = () => {
         <option value="In Progress">In Progress</option>
         <option value="Done">Done</option>
       </select>
-      <input type='date' value={dueDate} onChange={(e)=>setDueDate(e.target.value)} min={formattedDate}/>
+      <input type='date' onChange={(e)=>setDueDate(e.target.value)} min={formattedDate}/>
       <button type="submit">Add Task</button>
     </form>
   )

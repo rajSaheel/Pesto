@@ -7,9 +7,8 @@ const Task = require('../models/Task')
 router.post('/', authMiddleware.auth, async (req, res) => {
   const { title, description, status,dueDate } = req.body
   const userId = req.user.id
-  const date = new Date(dueDate)
   try {
-    const task = new Task({ title, description, status, userId: userId,dueDate:date })
+    const task = new Task({ title, description, status, userId: userId,dueDate:dueDate?new Date(dueDate):null })
     await task.save()
     res.status(201).json(task)
   } catch (error) {
@@ -22,7 +21,10 @@ router.get('/', authMiddleware.auth, async (req, res) => {
   const userId = req.user.id
 
   try {
-    const tasks = await Task.find({ userId: userId })
+    const tasks = await Task.find({ userId: userId }).sort({ 
+      dueDate: 1,
+      status:-1
+    })
     res.json(tasks)
   } catch (error) {
     res.status(500).json({ message: 'Server error', error:error.message })

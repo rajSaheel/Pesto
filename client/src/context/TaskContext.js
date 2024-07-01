@@ -9,12 +9,20 @@ export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([])
   const { fetchUser } = useContext(AuthContext)
 
+  const sortArr = (unsortedArr)=>{
+    const notNullArr = unsortedArr.filter(task=>task.dueDate!=null)
+    const nullArr = unsortedArr.filter(task=>task.dueDate==null)
+    return notNullArr.concat(nullArr)
+  }
+
   const fetchTasks = async () => {
     try{
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
       })
-      setTasks(response.data)
+      
+      const finalArr = sortArr(response.data)
+      setTasks(finalArr)
     }catch(e){
       fetchUser()
     }
@@ -25,21 +33,21 @@ export const TaskProvider = ({ children }) => {
     const response = await axios.post(`${process.env.REACT_APP_API_URL}/tasks`, task, {
       headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
     })
-    setTasks([...tasks, response.data])
+    fetchTasks()
   }
 
   const updateTask = async (id, task) => {
     const response = await axios.put(`${process.env.REACT_APP_API_URL}/tasks/${id}`, task, {
       headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
     })
-    setTasks(tasks.map(t => (t._id === id ? response.data : t)))
+    fetchTasks()
   }
 
   const deleteTask = async (id) => {
     await axios.delete(`${process.env.REACT_APP_API_URL}/tasks/${id}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
     })
-    setTasks(tasks.filter(t => t._id !== id))
+    fetchTasks()
   }
 
   return (
