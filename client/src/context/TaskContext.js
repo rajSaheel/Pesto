@@ -20,7 +20,6 @@ export const TaskProvider = ({ children }) => {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
       })
-      
       const finalArr = sortArr(response.data)
       setTasks(finalArr)
     }catch(e){
@@ -66,6 +65,8 @@ export const TaskProvider = ({ children }) => {
     }
     
   }
+
+  
 
   return (
     <TaskContext.Provider value={{ tasks, fetchTasks, createTask, updateTask, deleteTask,error }}>

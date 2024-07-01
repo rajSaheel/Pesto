@@ -9,11 +9,9 @@ const TaskList = () => {
   const [filterStatus, setFilterStatus] = useState('All')
   const [filteredTasks, setFilteredTasks] = useState([])
 
-  
-
-  useEffect(() => {
+  useEffect(()=>{
     fetchTasks()
-  }, [fetchTasks])
+  },[])
 
   useEffect(() => {
     const filterAndSearchTasks = () => {
