@@ -5,11 +5,17 @@ const Register = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [avatar, setAvatar] = useState(null)
   const { register, error } = useContext(AuthContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    register(username, password, name)
+    const formData = new FormData()
+    formData.append('username', username)
+    formData.append('password', password)
+    formData.append('name', name)
+    formData.append('avatar', avatar)
+    register(formData)
   }
 
   return (
@@ -43,7 +49,10 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <input type='file'></input>
+        </div>
+        <div>
+          <label htmlFor="avatar">Avatar:</label>
+          <input type='file' name="avatar" accept='image/*' onChange={(e) => setAvatar(e.target.files[0])} />
         </div>
         <button type="submit">Register</button>
       </form>

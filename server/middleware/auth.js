@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
+
 const ACCESS_TOKEN_SECRET = 'access_token_secret'
 const REFRESH_TOKEN_SECRET = 'refresh_token_secret'
 const ACCESS_TOKEN_EXPIRATION = '15m'
@@ -8,7 +9,7 @@ const REFRESH_TOKEN_EXPIRATION = '7d'
 
 // Function to generate tokens
 const generateTokens = (user) => {
-  const payload = { id: user._id, username: user.username,name:user.name }
+  const payload = { id: user._id, username: user.username,name:user.name,avatar:user.avatar }
   const accessToken = jwt.sign(payload, ACCESS_TOKEN_SECRET, { expiresIn: ACCESS_TOKEN_EXPIRATION })
   const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRATION })
   return { accessToken, refreshToken,user:payload }
@@ -17,13 +18,14 @@ const generateTokens = (user) => {
 // Register a new user
 exports.register = async (req, res, next) => {
   const { username, password, name } = req.body
+  const avatar = req.file ? `${req.file.filename}`:''
   try {
     let user = await User.findOne({ username })
     if (user) {
       return res.status(400).json({ message: 'Username already exists' })
     }
 
-    user = new User({ username, password, name })
+    user = new User({ username, password, name,avatar })
     await user.save()
 
     const tokens = generateTokens(user)

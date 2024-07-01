@@ -3,8 +3,8 @@ import TaskContext from '../../context/TaskContext.js'
 import TaskForm from './TaskForm.js'
 import TaskItem from './TaskItem.js'
 
-const TaskListPage = () => {
-  const { tasks, fetchTasks } = useContext(TaskContext)
+const TaskList = () => {
+  const { tasks, fetchTasks,error } = useContext(TaskContext)
   const [searchQuery, setSearchQuery] = useState('')
   const [filterStatus, setFilterStatus] = useState('All')
   const [filteredTasks, setFilteredTasks] = useState([])
@@ -13,7 +13,7 @@ const TaskListPage = () => {
 
   useEffect(() => {
     fetchTasks()
-  }, [])
+  }, [fetchTasks])
 
   useEffect(() => {
     const filterAndSearchTasks = () => {
@@ -41,7 +41,7 @@ const TaskListPage = () => {
 
   return (
     <div>
-      <h1>Task List</h1>
+      <h1>Tasks</h1>
       <TaskForm/>
       <input
         type="text"
@@ -55,6 +55,7 @@ const TaskListPage = () => {
         <option value="In Progress">In Progress</option>
         <option value="Done">Done</option>
       </select>
+      <h1>{error&&error}</h1>
       <ul>
         {filteredTasks.map(task => 
           <TaskItem key={task._id} task={task}/>
@@ -64,4 +65,4 @@ const TaskListPage = () => {
   )
 }
 
-export default TaskListPage
+export default TaskList

@@ -47,9 +47,11 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  const register = async (username, password, name) => {
+  const register = async (formData) => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, { username,name, password })
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, formData,{headers:{
+        'Content-Type':'multipart/form-data'
+      }})
       localStorage.setItem('accessToken', response.data.accessToken)
       localStorage.setItem('refreshToken', response.data.refreshToken)
       setUser(response.data.user)
