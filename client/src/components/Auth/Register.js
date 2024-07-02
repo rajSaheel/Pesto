@@ -16,10 +16,14 @@ const Register = () => {
     formData.append('name', name)
     formData.append('avatar', avatar)
     register(formData)
+    setName('')
+    setPassword('')
+    setUsername('')
+    setAvatar(null)
   }
 
   return (
-    <div>
+    <div className='auth-form'>
       <h2>Register</h2>
       {error && <p style={{ color: 'red' }}>{error.register}</p>}
       <form onSubmit={handleSubmit}>

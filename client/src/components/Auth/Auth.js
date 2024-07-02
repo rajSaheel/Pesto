@@ -4,7 +4,7 @@ import Register from './Register'
 
 const AuthComponent = () => {
     return (
-        <div>
+        <div className='auth-container container'>
             <Login />
             <Register />
         </div>

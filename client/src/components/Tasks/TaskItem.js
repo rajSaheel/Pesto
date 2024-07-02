@@ -13,8 +13,8 @@ const TaskItem = ({ task }) => {
   }
 
   return (
-    <li>
-      <h3>{task.title}</h3>
+    <li className='task-item'>
+      <h3 className='task-title'>{task.title}</h3>
       <p>{task.description}</p>
       <select value={task.status} onChange={handleStatusChange}>
         <option value="To Do">To Do</option>

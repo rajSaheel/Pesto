@@ -8,11 +8,14 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     login(username, password)
+    setUsername('')
+    setPassword('')
   }
 
   return (
-    <div>
+    <div className='auth-form'>
       <h2>Login</h2>
       {error && <p style={{ color: 'red' }}>{error.login}</p>}
       <form onSubmit={handleSubmit}>

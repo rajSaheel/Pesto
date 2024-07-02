@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       if (error.response && error.response.status === 401) {
         setError({login:'Invalid credentials'})
-      } else if(error.response && error.response.status === 401){
+      } else if(error.response && error.response.status === 402){
         setError({login:'User not registered'})
       }
       else {
