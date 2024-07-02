@@ -15,6 +15,7 @@ This is a full-stack task management application built using the MERN stack (Mon
 # Installation
 
 Note: 
+- The step by step process to setup has been provided in the [Loom video](https://www.loom.com/share/5cec46df46b04374be9747a3db998cba?sid=80fd50c4-a006-4f3c-b36d-48ed78128425) as well
 - MongoDB has already been configured and will be connected to the developer's database for the purpose project showcase only.
 - In the frontend too, backend API url has been configured just for project showcasing
 
@@ -52,3 +53,4 @@ npm run start
 ```
 
 # You will be redirected to the app
+
