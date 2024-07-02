@@ -30,13 +30,7 @@ cd Pesto
 cd server
 npm install
 ```
-
-3. Create .env in the backend directory:
-```
-MONGO_URI=your_mongodb_uri
-```
-
-4. Run the server:
+3. Run the server:
 ```
 npm run start
 ```
@@ -52,5 +46,3 @@ npm install
 ```
 npm run start
 ```
-
-## Folder Structure
