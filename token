@@ -1,9 +1,0 @@
-{
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2ZhNTI5MDZlYzE1MmVmZWJjOTNkYSIsInVzZXJuYW1lIjoidmlzaGFsLmt1bWFyIiwibmFtZSI6IlZpc2hhbCIsImlhdCI6MTcxOTY0MTM4NSwiZXhwIjoxNzE5NjQyMjg1fQ.YNIxDgdJqMkaRZlTrwZ2VWpx7o2WCcvN-sNl3vEZXsY",
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2ZhNTI5MDZlYzE1MmVmZWJjOTNkYSIsInVzZXJuYW1lIjoidmlzaGFsLmt1bWFyIiwibmFtZSI6IlZpc2hhbCIsImlhdCI6MTcxOTY0MTM4NSwiZXhwIjoxNzIwMjQ2MTg1fQ.Z-6Nv8QFBg2kmgKecmaefx2K0zaM4Pur-NAt3u2n5Yg",
-  "user": {
-    "id": "667fa52906ec152efebc93da",
-    "username": "vishal.kumar",
-    "name": "Vishal"
-  }
-}
