@@ -14,9 +14,10 @@ This is a full-stack task management application built using the MERN stack (Mon
 
 # Installation
 
+Note: MongoDB has already been configured and will be connected to the developer's database
+
 ### Prerequisites
 - Node.js
-- MongoDB
 
 ## Backend Setup
 
